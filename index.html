@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Premium Neon Bingo</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,
+    rgba(59,130,246,.18),
+    transparent 30%),
+
+    radial-gradient(circle at bottom,
+    rgba(236,72,153,.12),
+    transparent 30%),
+
+    linear-gradient(
+    135deg,
+    #020617,
+    #0f172a,
+    #111827);
+
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+    padding:20px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.container{
+    width:100%;
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    gap:28px;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.left-side{
+    width:100%;
+    max-width:450px;
+}
+
+.right-side{
+    width:340px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:25px;
+
+    background:linear-gradient(
+    90deg,
+    #fff,
+    #facc15,
+    #fff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.25),
+    0 0 40px rgba(250,204,21,.12);
+}
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.code-box{
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:26px;
+
+    padding:20px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.04);
+}
+
+.code-box input{
+    width:100%;
+    height:60px;
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:0 18px;
+
+    color:white;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.code-box input:focus{
+    border-color:rgba(250,204,21,.5);
+
+    box-shadow:
+    0 0 20px rgba(250,204,21,.15);
+}
+
+.code-box input::placeholder{
+    color:#94a3b8;
+}
+
+.code-info{
+    margin-top:12px;
+    text-align:center;
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+/* =========================
+   MACHINE
+========================= */
+
+.machine-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.machine{
+    position:relative;
+
+    width:370px;
+    height:370px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(255,255,255,.18),
+    transparent 35%),
+
+    rgba(255,255,255,.05);
+
+    border:10px solid rgba(255,255,255,.14);
+
+    overflow:hidden;
+
+    backdrop-filter:blur(16px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    animation:neonPulse 3s ease-in-out infinite;
+
+    box-shadow:
+    inset 0 0 50px rgba(255,255,255,.08),
+    0 0 40px rgba(59,130,246,.15),
+    0 0 90px rgba(236,72,153,.08);
+}
+
+/* NEON PULSE */
+
+@keyframes neonPulse{
+
+    0%{
+        box-shadow:
+        inset 0 0 50px rgba(255,255,255,.08),
+        0 0 30px rgba(59,130,246,.15),
+        0 0 60px rgba(236,72,153,.08);
+    }
+
+    50%{
+        box-shadow:
+        inset 0 0 60px rgba(255,255,255,.12),
+        0 0 50px rgba(59,130,246,.35),
+        0 0 120px rgba(236,72,153,.18),
+        0 0 180px rgba(250,204,21,.08);
+    }
+
+    100%{
+        box-shadow:
+        inset 0 0 50px rgba(255,255,255,.08),
+        0 0 30px rgba(59,130,246,.15),
+        0 0 60px rgba(236,72,153,.08);
+    }
+}
+
+/* SHINE EFFECT */
+
+.machine::before{
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:600px;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent);
+
+    transform:rotate(25deg);
+
+    top:-120px;
+    left:-220px;
+
+    animation:machineShine 4s linear infinite;
+
+    z-index:15;
+}
+
+@keyframes machineShine{
+
+    100%{
+        left:520px;
+    }
+}
+
+/* GOLD RING */
+
+.gold-ring{
+    position:absolute;
+    inset:18px;
+
+    border-radius:50%;
+
+    border:3px solid rgba(250,204,21,.3);
+
+    animation:ringGlow 3s ease infinite;
+}
+
+@keyframes ringGlow{
+
+    0%{
+        box-shadow:
+        0 0 15px rgba(250,204,21,.1),
+        inset 0 0 12px rgba(250,204,21,.05);
+    }
+
+    50%{
+        box-shadow:
+        0 0 35px rgba(250,204,21,.25),
+        inset 0 0 20px rgba(250,204,21,.08);
+    }
+
+    100%{
+        box-shadow:
+        0 0 15px rgba(250,204,21,.1),
+        inset 0 0 12px rgba(250,204,21,.05);
+    }
+}
+
+/* SPINNER */
+
+.spinner{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    animation:spin 12s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* BALL */
+
+.real-ball{
+    position:absolute;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    animation:ballGlow 2s ease infinite alternate;
+
+    box-shadow:
+    inset -8px -10px 15px rgba(0,0,0,.25),
+    inset 8px 8px 12px rgba(255,255,255,.35),
+    0 8px 18px rgba(0,0,0,.3);
+}
+
+@keyframes ballGlow{
+
+    from{
+        filter:brightness(1);
+    }
+
+    to{
+        filter:
+        brightness(1.15)
+        drop-shadow(
+        0 0 10px rgba(255,255,255,.15));
+    }
+}
+
+.real-ball::before{
+    content:'';
+
+    position:absolute;
+
+    top:8px;
+    left:10px;
+
+    width:18px;
+    height:12px;
+
+    background:rgba(255,255,255,.5);
+
+    border-radius:50%;
+
+    transform:rotate(-20deg);
+}
+
+/* BALL POSITION */
+
+.ball1{
+    background:linear-gradient(145deg,#22c55e,#15803d);
+    top:245px;
+    left:60px;
+}
+
+.ball2{
+    background:linear-gradient(145deg,#ec4899,#be185d);
+    top:242px;
+    left:132px;
+}
+
+.ball3{
+    background:linear-gradient(145deg,#3b82f6,#1d4ed8);
+    top:240px;
+    left:205px;
+}
+
+.ball4{
+    background:linear-gradient(145deg,#facc15,#ca8a04);
+    top:190px;
+    left:20px;
+}
+
+.ball5{
+    background:linear-gradient(145deg,#8b5cf6,#6d28d9);
+    top:182px;
+    left:96px;
+}
+
+.ball6{
+    background:linear-gradient(145deg,#fb923c,#ea580c);
+    top:180px;
+    left:174px;
+}
+
+.ball7{
+    background:linear-gradient(145deg,#14b8a6,#0f766e);
+    top:180px;
+    left:255px;
+}
+
+.ball8{
+    background:linear-gradient(145deg,#f43f5e,#be123c);
+    top:120px;
+    left:65px;
+}
+
+.ball9{
+    background:linear-gradient(145deg,#38bdf8,#0284c7);
+    top:95px;
+    left:140px;
+}
+
+.ball10{
+    background:linear-gradient(145deg,#a3e635,#65a30d);
+    top:120px;
+    left:220px;
+}
+
+.ball11{
+    background:linear-gradient(145deg,#e879f9,#a21caf);
+    top:260px;
+    left:275px;
+}
+
+.ball12{
+    background:linear-gradient(145deg,#fde047,#ca8a04);
+    top:260px;
+    left:-5px;
+}
+
+/* ARM */
+
+.machine-arm{
+    position:absolute;
+
+    width:4px;
+    height:120px;
+
+    background:rgba(255,255,255,.55);
+
+    top:50%;
+    left:50%;
+
+    transform-origin:bottom center;
+
+    border-radius:10px;
+}
+
+.arm1{
+    transform:translate(-50%,-100%) rotate(0deg);
+}
+
+.arm2{
+    transform:translate(-50%,-100%) rotate(120deg);
+}
+
+.arm3{
+    transform:translate(-50%,-100%) rotate(240deg);
+}
+
+.center-dot{
+    position:absolute;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#d1d5db;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:5;
+}
+
+/* GLASS */
+
+.glass{
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.2),
+    transparent 60%);
+}
+
+/* EXIT */
+
+.exit-hole{
+    position:absolute;
+
+    bottom:-2px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:95px;
+    height:38px;
+
+    background:#020617;
+
+    border-radius:20px;
+
+    border:3px solid rgba(255,255,255,.08);
+
+    z-index:10;
+}
+
+/* DROP BALL */
+
+.drop-ball{
+    position:absolute;
+
+    width:66px;
+    height:66px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    145deg,
+    #ef4444,
+    #b91c1c);
+
+    left:50%;
+    transform:translateX(-50%);
+
+    bottom:190px;
+
+    opacity:0;
+
+    z-index:20;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:700;
+    font-size:20px;
+
+    box-shadow:
+    inset -8px -10px 15px rgba(0,0,0,.25),
+    inset 8px 8px 12px rgba(255,255,255,.35),
+    0 8px 18px rgba(0,0,0,.3);
+}
+
+.animate-drop{
+    animation:dropBall 2.3s ease forwards;
+}
+
+@keyframes dropBall{
+
+    0%{
+        bottom:220px;
+        opacity:0;
+        transform:translateX(-50%) scale(.7);
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        bottom:-85px;
+        opacity:1;
+    }
+}
+
+/* BUTTON */
+
+.button{
+    width:100%;
+    height:62px;
+
+    margin-top:28px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #22c55e,
+    #16a34a);
+
+    color:white;
+
+    font-size:19px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    overflow:hidden;
+    position:relative;
+
+    box-shadow:
+    0 0 15px rgba(34,197,94,.25),
+    0 0 30px rgba(34,197,94,.15);
+
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 20px rgba(34,197,94,.35),
+    0 0 50px rgba(34,197,94,.25);
+}
+
+.button::before{
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.3),
+    transparent);
+
+    animation:shine 2s infinite;
+}
+
+@keyframes shine{
+    100%{
+        left:120%;
+    }
+}
+
+/* RIGHT BOARD */
+
+.board{
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:20px;
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.03);
+}
+
+.board-title{
+    text-align:center;
+    color:#facc15;
+
+    font-size:20px;
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+.winner-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.04);
+
+    margin-bottom:10px;
+}
+
+.winner-prize{
+    color:#4ade80;
+    font-weight:700;
+}
+
+/* STEPS */
+
+.step-item{
+    display:flex;
+    gap:14px;
+    align-items:center;
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+}
+
+.step-number{
+    min-width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    145deg,
+    #facc15,
+    #ca8a04);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#111827;
+    font-weight:700;
+}
+
+.step-text{
+    font-size:14px;
+    line-height:1.5;
+    color:#e2e8f0;
+}
+
+/* POPUP */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+
+    backdrop-filter:blur(8px);
+}
+
+.popup-box{
+    width:100%;
+    max-width:360px;
+
+    background:
+    linear-gradient(
+    180deg,
+    #111827,
+    #1e293b);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 30px rgba(59,130,246,.2),
+    0 0 80px rgba(236,72,153,.15),
+    0 0 120px rgba(250,204,21,.08);
+}
+
+.popup-box h2{
+    font-size:34px;
+    margin-bottom:10px;
+    color:#4ade80;
+}
+
+.gift{
+    margin-top:10px;
+    font-size:30px;
+    font-weight:800;
+    color:#facc15;
+}
+
+.claim-btn{
+    width:100%;
+    height:55px;
+
+    margin-top:20px;
+
+    border:none;
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #facc15,
+    #eab308);
+
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* LOADING */
+
+.loading-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(2,6,23,.92);
+
+    backdrop-filter:blur(10px);
+
+    z-index:9999;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+}
+
+.loading-spinner{
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    border:6px solid
+    rgba(255,255,255,.08);
+
+    border-top:
+    6px solid #facc15;
+
+    animation:
+    spinLoader 1s linear infinite;
+
+    box-shadow:
+    0 0 30px rgba(250,204,21,.25);
+}
+
+@keyframes spinLoader{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.loading-text{
+    margin-top:25px;
+
+    font-size:20px;
+    font-weight:700;
+
+    color:#facc15;
+
+    letter-spacing:1px;
+
+    animation:pulseText 1.2s ease infinite;
+}
+
+@keyframes pulseText{
+
+    0%{
+        opacity:.5;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.5;
+    }
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:20px;
+    text-align:center;
+    font-size:13px;
+    color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .right-side{
+        width:100%;
+        max-width:450px;
+    }
+
+    .machine{
+        width:320px;
+        height:320px;
+    }
+
+    .title{
+        font-size:34px;
+    }
+
+    .real-ball{
+        width:50px;
+        height:50px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left-side">
+
+<div class="title">
+✨ PREMIUM BINGO ✨
+</div>
+
+<div class="code-box">
+
+<input type="text"
+id="accessCode"
+placeholder="Masukkan kode bingo...">
+
+<div class="code-info">
+Masukkan kode untuk memutar mesin hadiah
+</div>
+
+</div>
+
+<div class="machine-wrapper">
+
+<div class="machine">
+
+<div class="gold-ring"></div>
+
+<div class="spinner">
+
+<div class="real-ball ball1"></div>
+<div class="real-ball ball2"></div>
+<div class="real-ball ball3"></div>
+<div class="real-ball ball4"></div>
+<div class="real-ball ball5"></div>
+<div class="real-ball ball6"></div>
+<div class="real-ball ball7"></div>
+<div class="real-ball ball8"></div>
+<div class="real-ball ball9"></div>
+<div class="real-ball ball10"></div>
+<div class="real-ball ball11"></div>
+<div class="real-ball ball12"></div>
+
+<div class="machine-arm arm1"></div>
+<div class="machine-arm arm2"></div>
+<div class="machine-arm arm3"></div>
+
+</div>
+
+<div class="center-dot"></div>
+
+<div class="glass"></div>
+
+<div class="drop-ball"
+id="dropBall">
+?
+</div>
+
+<div class="exit-hole"></div>
+
+</div>
+
+</div>
+
+<button class="button"
+onclick="playGame()">
+PUTAR BINGO
+</button>
+
+<div class="footer">
+Event terbatas • Kesempatan menang setiap hari
+</div>
+
+</div>
+
+<div class="right-side">
+
+<div class="board">
+
+<div class="board-title">
+🏆 Pemenang Terbaru
+</div>
+
+<div id="winnerList">
+
+<div class="winner-item">
+<span>R***Y</span>
+<span class="winner-prize">
+Rp 100.000
+</span>
+</div>
+
+<div class="winner-item">
+<span>A***A</span>
+<span class="winner-prize">
+Mystery Box
+</span>
+</div>
+
+<div class="winner-item">
+<span>D***Z</span>
+<span class="winner-prize">
+Voucher Premium
+</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="board">
+
+<div class="board-title">
+🎯 Cara Bermain
+</div>
+
+<div class="step-item">
+<div class="step-number">1</div>
+
+<div class="step-text">
+Masukkan kode bingo premium
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">2</div>
+
+<div class="step-text">
+Tekan tombol PUTAR BINGO
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">3</div>
+
+<div class="step-text">
+Tunggu bola keluar dari mesin
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">4</div>
+
+<div class="step-text">
+Claim hadiah spesial kamu
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+
+<div class="popup-overlay"
+id="popupOverlay">
+
+<div class="popup-box">
+
+<h2>🎉 SELAMAT</h2>
+
+<p>Kamu mendapatkan hadiah:</p>
+
+<div class="gift"
+id="giftText">
+Rp 100.000
+</div>
+
+<button class="claim-btn"
+onclick="closePopup()">
+CLAIM HADIAH
+</button>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
+
+<div class="loading-overlay"
+id="loadingOverlay">
+
+<div class="loading-spinner"></div>
+
+<div class="loading-text">
+MENGACAK HADIAH...
+</div>
+
+</div>
+
+<script>
+
+const hadiah = [
+'Rp 10.000',
+'Rp 25.000',
+'Rp 50.000',
+'Rp 100.000',
+'Mystery Box',
+'Voucher Premium',
+'Pulsa Gratis'
+];
+
+function playGame(){
+
+    const code =
+    document.getElementById(
+    'accessCode'
+    ).value.trim();
+
+    if(code === ''){
+        alert('Masukkan kode bingo');
+        return;
+    }
+
+    const loading =
+    document.getElementById(
+    'loadingOverlay'
+    );
+
+    const ball =
+    document.getElementById(
+    'dropBall'
+    );
+
+    const popup =
+    document.getElementById(
+    'popupOverlay'
+    );
+
+    const giftText =
+    document.getElementById(
+    'giftText'
+    );
+
+    const randomNumber =
+    Math.floor(Math.random()*99)+1;
+
+    const randomGift =
+    hadiah[
+    Math.floor(
+    Math.random()*hadiah.length
+    )];
+
+    loading.style.display='flex';
+
+    setTimeout(()=>{
+
+        loading.style.display='none';
+
+        ball.innerText =
+        randomNumber;
+
+        ball.classList.remove(
+        'animate-drop'
+        );
+
+        void ball.offsetWidth;
+
+        ball.classList.add(
+        'animate-drop'
+        );
+
+        setTimeout(()=>{
+
+            giftText.innerText =
+            randomGift;
+
+            popup.style.display =
+            'flex';
+
+        },2200);
+
+    },2500);
+}
+
+function closePopup(){
+
+    document.getElementById(
+    'popupOverlay'
+    ).style.display='none';
+}
+
+/* AUTO WINNER */
+
+setInterval(()=>{
+
+    const names = [
+    'R***Y',
+    'A***A',
+    'D***Z',
+    'F***N',
+    'K***L',
+    'M***X'
+    ];
+
+    const prizes = [
+    'Rp 10.000',
+    'Rp 25.000',
+    'Mystery Box',
+    'Voucher Premium',
+    'Pulsa Gratis'
+    ];
+
+    const list =
+    document.getElementById(
+    'winnerList'
+    );
+
+    const item =
+    document.createElement(
+    'div'
+    );
+
+    item.className =
+    'winner-item';
+
+    item.innerHTML = `
+    <span>
+    ${names[Math.floor(
+    Math.random()*names.length)]}
+    </span>
+
+    <span class="winner-prize">
+    ${prizes[Math.floor(
+    Math.random()*prizes.length)]}
+    </span>
+    `;
+
+    list.prepend(item);
+
+    if(list.children.length > 5){
+        list.removeChild(
+        list.lastChild
+        );
+    }
+
+},4000);
+
+</script>
+
+</body>
+</html>
