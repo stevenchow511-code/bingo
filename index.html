@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Premium Neon Bingo</title>
+<title>Hadiah Bingo</title>
 
 <style>
 
@@ -17,24 +17,34 @@
 
 body{
     background:
-    radial-gradient(circle at top,
-    rgba(59,130,246,.18),
-    transparent 30%),
-
-    radial-gradient(circle at bottom,
-    rgba(236,72,153,.12),
-    transparent 30%),
-
     linear-gradient(
-    135deg,
-    #020617,
-    #0f172a,
-    #111827);
+    rgba(2,6,23,.75),
+    rgba(15,23,42,.82)
+    ),
+
+    url("https://i.ibb.co/wN1Xhwbx/image.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 
     min-height:100vh;
     overflow-x:hidden;
     color:white;
     padding:20px;
+}
+
+@keyframes bgMove{
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
 }
 
 /* =========================
@@ -935,7 +945,7 @@ body{
 <div class="left-side">
 
 <div class="title">
-✨ PREMIUM BINGO ✨
+✨ HADIAH BINGO ✨
 </div>
 
 <div class="code-box">
@@ -1023,14 +1033,14 @@ Rp 100.000
 <div class="winner-item">
 <span>A***A</span>
 <span class="winner-prize">
-Mystery Box
+Rp 500,000
 </span>
 </div>
 
 <div class="winner-item">
 <span>D***Z</span>
 <span class="winner-prize">
-Voucher Premium
+Rp 2,000,000
 </span>
 </div>
 
@@ -1048,7 +1058,7 @@ Voucher Premium
 <div class="step-number">1</div>
 
 <div class="step-text">
-Masukkan kode bingo premium
+Masukkan kode bingo
 </div>
 </div>
 
@@ -1072,7 +1082,7 @@ Tunggu bola keluar dari mesin
 <div class="step-number">4</div>
 
 <div class="step-text">
-Claim hadiah spesial kamu
+Screenshot dan Claim hadiah spesial kamu
 </div>
 </div>
 
@@ -1099,7 +1109,7 @@ Rp 100.000
 </div>
 
 <button class="claim-btn"
-onclick="closePopup()">
+onclick="window.location.href='http://wadahwow.com/'">
 CLAIM HADIAH
 </button>
 
@@ -1123,13 +1133,13 @@ MENGACAK HADIAH...
 <script>
 
 const hadiah = [
-'Rp 10.000',
-'Rp 25.000',
-'Rp 50.000',
-'Rp 100.000',
-'Mystery Box',
-'Voucher Premium',
-'Pulsa Gratis'
+'Rp 20,000',
+'Rp 250,000',
+'Rp 50.,000',
+'Rp 100,000',
+'Rp 500,000',
+'Rp 2,000,000',
+'Rp 1,000,000'
 ];
 
 function playGame(){
@@ -1228,9 +1238,9 @@ setInterval(()=>{
     const prizes = [
     'Rp 10.000',
     'Rp 25.000',
-    'Mystery Box',
-    'Voucher Premium',
-    'Pulsa Gratis'
+    'Rp 500,000',
+    'Rp 2,000,000',
+    'Rp 1,000,000'
     ];
 
     const list =
