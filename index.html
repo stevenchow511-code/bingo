@@ -1008,7 +1008,7 @@ PUTAR BINGO
 </button>
 
 <div class="footer">
-Event terbatas • Kesempatan menang setiap hari
+Event terbatas • Ambil Hadiah hari ini
 </div>
 
 </div>
@@ -1149,10 +1149,24 @@ function playGame(){
     'accessCode'
     ).value.trim();
 
+    const validCodes = [
+    'super',
+    'winner',
+    'wadahku',
+    'hadiah'
+    ];
+
     if(code === ''){
         alert('Masukkan kode bingo');
         return;
     }
+
+    if(!validCodes.includes(code)){
+        alert('Kode tidak valid');
+        return;
+    }
+
+    alert('Kode valid!');
 
     const loading =
     document.getElementById(
